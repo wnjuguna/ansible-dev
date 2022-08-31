@@ -1,4 +1,4 @@
-# -*- mode: ruby -*-
+
 # vi: set ft=ruby :
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -66,4 +66,12 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+  config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "provisioning/playbook.yml"
+      ansible.host_vars = {
+          "default" => {"ansible_become" => "yes"
+          }
+      }
+  end
 end
