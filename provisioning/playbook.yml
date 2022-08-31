@@ -1,0 +1,5 @@
+---
+- name: "Provisioning development host"
+  hosts: default
+  roles:
+  - dev-server

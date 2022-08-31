@@ -1,0 +1,8 @@
+---
+# tasks file for dev-server
+- name: "Updating cache and upgrading packages"
+  ansible.builtin.apt:
+      state: latest
+      update_cache: True
+      name:
+        - software-properties-common
