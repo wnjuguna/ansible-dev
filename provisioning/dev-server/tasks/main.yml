@@ -2,7 +2,20 @@
 # tasks file for dev-server
 - name: "Updating cache and upgrading packages"
   ansible.builtin.apt:
-      state: latest
-      update_cache: True
-      name:
-        - software-properties-common
+    state: latest
+    update_cache: True
+    name:
+    - virtualenv
+
+- name: "Installing ansible-core requirements"
+  ansible.builtin.pip:
+    virtualenv: /home/vagrant/ansible
+    chdir: /ansible
+    requirements: requirements.txt
+
+- name: "Installing docs requirements"
+  ansible.builtin.pip:
+    virtualenv: /home/vagrant/ansible
+    chdir: /ansible/docs/docsite
+    requirements: requirements.txt
+
